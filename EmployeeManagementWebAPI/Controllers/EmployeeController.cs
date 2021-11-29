@@ -100,7 +100,7 @@ namespace EmployeeManagementWebAPI.Controllers
         // POST api/employee/savefile
         [Route("savefile")]
         [HttpPost]
-        public JsonResult SaveFile()
+        public async Task<JsonResult> SaveFile()
         {
             try
             {
@@ -111,7 +111,7 @@ namespace EmployeeManagementWebAPI.Controllers
 
                 using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
-                    postedFile.CopyToAsync(stream);
+                    await postedFile.CopyToAsync(stream);
                 }
 
                 return new JsonResult(fileName);
