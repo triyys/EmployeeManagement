@@ -121,19 +121,5 @@ namespace EmployeeManagementWebAPI.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
-
-        [Route("get-all-department")]
-        [HttpGet]
-        public JsonResult GetAllDepartmentNames()
-        {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "select Name from dbo.Department";
-
-                var result = connection.Query(query);
-
-                return new JsonResult(result);
-            }
-        }
     }
 }
